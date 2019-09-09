@@ -2,7 +2,7 @@
 
 This repository contains Marlin custom config files for Creality Ender-5 printers with a BIGTREETECH SKR Mini E3 motherboard.  
 
-Updated on 2019-09-06.
+Updated on 2019-09-09.
 
 ## Installation guide for Printers with BL Touch 3.1
 
@@ -14,7 +14,17 @@ Updated on 2019-09-06.
 6. Compile the software and flash the board.
 7. **Optional:** Do a "Restore failsafe" from the printer's menu or delete file EEPROM.DAT from the SD Card before powering on to make sure that the printer is running with the default values and avoid malfunction.
 
-Please note that there are still some compatibility issues with BL Touch v3.x that randomly causes homing or bed leveling to fail, for more details please check the following links: https://www.reddit.com/r/ender5/comments/cvrokv/bigtreetech_skr_mini_e3_on_ender_5/.
+### BL Touch Issues
+
+Please note that there are still some compatibility issues with BL Touch v3.x that randomly causes homing or bed leveling to fail forcing printhead into bed. 
+
+At this moment it is not clear if this is a software or hardware issue.
+
+For more details please check the following links: 
+
+1. User experience posted on Reddit: https://www.reddit.com/r/ender5/comments/cvrokv/bigtreetech_skr_mini_e3_on_ender_5/
+2. BL Touch issue reported on BTT Github official repository: https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3-/issues/6
+3. 5v rail problem reported on SKR Mini FB User Group: https://www.facebook.com/groups/322956191976815/permalink/377307899874977/ (post snapshot https://i.imgur.com/99kHqls.png)
 
 
 
@@ -69,4 +79,4 @@ BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups
 | Board                | BIGTREETECH SKR Mini E3                                      |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with dedicated BL Touch port (PC14) and Z end stop port (PC2) |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 18e6ef83cb, 2019-09-06 |
+| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit c884dc6dbf, 2019-09-06 |

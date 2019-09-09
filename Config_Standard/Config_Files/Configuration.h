@@ -1957,7 +1957,6 @@
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
 #define CR10_STOCKDISPLAY
-#define DEFAULT_LCD_CONTRAST 127
 
 //
 // ANET and Tronxy Graphical Controller
