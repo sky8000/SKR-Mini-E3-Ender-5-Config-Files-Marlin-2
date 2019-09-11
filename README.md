@@ -2,9 +2,9 @@
 
 This repository contains Marlin custom config files for Creality Ender-5 printers with a BIGTREETECH SKR Mini E3 motherboard.  
 
-**Updated on 2019-09-10:** fixes the wrong slave address for Y and Z stepper drivers that was affecting sensor less homing (https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3-/issues/29).
+**Updated on 2019-09-11.**
 
-## Installation guide for Printers with BL Touch 3.1
+Installation guide for Printers with BL Touch 3.1
 
 1. Get the latest Marlin bugfix-2.0.x from the official site here: http://marlinfw.org/meta/download/.
 2. Copy files from folder **\Config_BLTouch31\Config_Files** in this repository to the folder **\Marlin** in your firmware root folder.
@@ -79,4 +79,4 @@ BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups
 | Board                | BIGTREETECH SKR Mini E3                                      |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with dedicated BL Touch port (PC14) and Z end stop port (PC2) |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 1ee620d5c7, 2019-09-10 |
+| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 2adda3d37e, 2019-09-11 |
