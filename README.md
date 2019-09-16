@@ -2,9 +2,11 @@
 
 This repository contains Marlin custom config files for Creality Ender-5 printers with a BIGTREETECH SKR Mini E3 motherboard.  
 
-**Updated on 2019-09-14.**
+**Updated on 2019-09-16:** BL Touch 3.1 is now working properly.
 
-Installation guide for Printers with BL Touch 3.1
+
+
+## Installation guide for Printers with BL Touch 3.1
 
 1. Get the latest Marlin bugfix-2.0.x from the official site here: http://marlinfw.org/meta/download/.
 2. Copy files from folder **\Config_BLTouch31\Config_Files** in this repository to the folder **\Marlin** in your firmware root folder.
@@ -13,20 +15,7 @@ Installation guide for Printers with BL Touch 3.1
 5. **If you Marlin source files are older than 6 Sep, 2019** copy files from folder **\CR10_Display_Fix** in this repository to the folder **\Marlin\src\lcd\dogm** in your firmware root folder (fixes [BUG] #15113 on latest Marlin bugfix-2.0.x, please view links section for more details).
 6. Compile the software and flash the board.
 7. **Optional:** Do a "Restore failsafe" from the printer's menu or delete file EEPROM.DAT from the SD Card before powering on to make sure that the printer is running with the default values and avoid malfunction.
-
-### BL Touch Issues
-
-Please note that there are still some compatibility issues with BL Touch v3.x that randomly causes homing or bed leveling to fail forcing printhead into bed. 
-
-At this moment it is not clear if this is a software or hardware issue.
-
-For more details please check the following links: 
-
-1. User experience posted on Reddit: https://www.reddit.com/r/ender5/comments/cvrokv/bigtreetech_skr_mini_e3_on_ender_5/
-2. BL Touch issue reported on BTT Github official repository: https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3-/issues/6
-3. 5v rail problem reported on SKR Mini FB User Group: https://www.facebook.com/groups/322956191976815/permalink/377307899874977/ (post snapshot https://i.imgur.com/99kHqls.png)
-
-
+8. 
 
 ## Installation guide for Printers without BL Touch
 
@@ -57,6 +46,32 @@ Below is a picture showing where to connect your BL Touch if you wish to use the
 
 
 
+## Using a buck converter to power BL Touch
+
+Below are two pictures that show how to connect BL Touch to a stable, low noise power source in order to fix the probing issues caused by SKR Mini E3 5v rail problem. 
+
+![](https://i.imgur.com/8eEEUF9.jpg)
+
+
+
+![](https://i.imgur.com/lZjAzvL.jpg)
+
+
+
+**Buck converter specs:**
+
+- Type/name: LM2596HVS DC-DC step-down module
+- Input Voltage: 4.5V ~ 53V
+- Output Voltage: 3V ~ 40V
+- Output Current: 3A (max)
+- Conversion efficiency: 92%(the highest)
+- Output Ripple: <30mV
+- Switching frequency: 150KHz
+- Operating Temperature: -45 ° ~ +85 °
+- Size: 43mm * 21mm * 14mm (L * W* H)
+
+
+
 ## Links
 
 SKR Mini E3 Github page: https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3-
@@ -78,5 +93,5 @@ BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups
 | Printer              | Creality Ender-5                                             |
 | Board                | BIGTREETECH SKR Mini E3                                      |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
-| ABL                  | BL Touch 3.1, tested with dedicated BL Touch port (PC14) and Z end stop port (PC2) |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 60ba23fc0c, 2019-09-14 |
+| ABL                  | BL Touch 3.1, tested with Z end stop port (PC2) and powered by a low noise buck converter |
+| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 30dd0e22b6, 2019-09-16 |
