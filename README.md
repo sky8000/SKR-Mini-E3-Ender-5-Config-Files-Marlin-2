@@ -1,8 +1,10 @@
-# Ender-5/SKR Mini E3 Config Files
+# Ender-5/SKR Mini E3 v1.0 Config Files
 
-This repository contains Marlin custom config files for Creality Ender-5 printers with a BIGTREETECH SKR Mini E3 motherboard.  
+This repository contains Marlin custom config files for Creality Ender-5 printers with a BIGTREETECH SKR Mini E3 v1.0 motherboard.  
 
-**Updated on 2019-10-04.**
+Please note that this configuration was not tested with SKR Mini E3 v1.2.
+
+**Updated on 2019-10-07.**
 
 
 
@@ -94,8 +96,8 @@ BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups
 | Item                 | Detail/description                                           |
 | -------------------- | ------------------------------------------------------------ |
 | Printer              | Creality Ender-5                                             |
-| Board                | BIGTREETECH SKR Mini E3                                      |
+| Board                | BIGTREETECH SKR Mini E3 v1.0                                 |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with Z end stop port (PC2) and powered by a low noise buck converter |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 511cd6d6c5, 2019-10-04 |
+| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 3384ae1bae, 2019-10-07 |
 
