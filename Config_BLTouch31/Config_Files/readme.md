@@ -2,7 +2,7 @@
 
 This guide documents all settings changed in files **Configuration.h** and **Configuration_adv.h** from Marlin bugfix 2.0.x config examples for **Creality Ender-5**. These settings are also compatible with **Ender-3** and **Ender-3 Pro**, just be sure to use the correct config examples for your printer.
 
-**Updated on 2019-10-11.**
+**Updated on 2019-10-12.**
 
 
 
@@ -56,10 +56,7 @@ Follow the next steps to enable and configure BL Touch:
 3. Change `#define\ AUTO_BED_LEVELING_BILINEAR` to `#define AUTO_BED_LEVELING_BILINEAR`.
 4. Uncomment `//#define Z_SAFE_HOMING`.
 
-If you're using BL Touch mount from original Creality kit on Ender-5, following these:
-
-1. Change `#define X_PROBE_OFFSET_FROM_EXTRUDER 10` to `#define X_PROBE_OFFSET_FROM_EXTRUDER -43`.
-2. Change `#define Y_PROBE_OFFSET_FROM_EXTRUDER 10` to `#define Y_PROBE_OFFSET_FROM_EXTRUDER -6`.
+If you're using BL Touch mount from original Creality kit on Ender-5 change `#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }` to `#define NOZZLE_TO_PROBE_OFFSET { -43, -6, 0 }`.
 
 Otherwise you'll have to measure the offsets and set the values accordingly. 
 
