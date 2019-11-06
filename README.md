@@ -4,6 +4,18 @@ This repository contains Marlin custom config files for **Creality Ender-5** pri
 
 Please note that this configuration is **not compatible with SKR Mini E3 v1.2**.
 
+Features:
+
+- Stock Ender-5/Ender-3/Ender-3 Pro LCD 12864 support.
+
+- BL Touch 3.x support (connected to dedicated on board port).
+
+- EEPROM support.
+
+- Works with Octoprint.
+
+  
+
 **Updated on 2019-11-06.**
 
 
@@ -88,6 +100,8 @@ Marlin bugfix-2.0.x: http://marlinfw.org/meta/download/
 Marlin Github repository: https://github.com/MarlinFirmware/Marlin
 
 BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups/322956191976815/
+
+Octoprint download page: https://octoprint.org/download/
 
 
 
