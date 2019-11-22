@@ -2,7 +2,7 @@
 
 This guide documents all settings changed in files **Configuration.h** and **Configuration_adv.h** from Marlin bugfix 2.0.x config examples for **Creality Ender-5**. These settings are also compatible with **Ender-3** and **Ender-3 Pro**, just be sure to use the correct config examples for your printer.
 
-**Updated on 2019-10-12.**
+**Updated on 2019-10-22.**
 
 
 
@@ -84,9 +84,12 @@ Follow next steps to configure communication with the stepper drivers (TMC2209):
 
 
 
-### 2.2. Configure BL Touch
+### 2.2. Configure BL Touch v3.x
 
 Follow the next steps to configure BL Touch for easier Z offset tuning:
 
 1. Change `#define BABYSTEP_MULTIPLICATOR  1` to `#define BABYSTEP_MULTIPLICATOR  10`.
 2. Uncomment `//#define BABYSTEP_ZPROBE_OFFSET` .
+
+Users with **BL Touch v3.0** have to uncomment  `//#define BLTOUCH_FORCE_MODE_SET`  to force logic into 5v mode. **This applies to BL Touch v3.0 only, do not enable this option in BL Touch v3.1 as it will force the probe to save settings in the internal flash each time the printer boots reducing the probe's life span.**
+
