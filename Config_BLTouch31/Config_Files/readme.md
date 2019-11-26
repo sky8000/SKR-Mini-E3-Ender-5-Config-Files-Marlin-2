@@ -2,7 +2,7 @@
 
 This guide documents all settings changed in files **Configuration.h** and **Configuration_adv.h** from Marlin bugfix 2.0.x config examples for **Creality Ender-5**. These settings are also compatible with **Ender-3** and **Ender-3 Pro**, just be sure to use the correct config examples for your printer.
 
-**Updated on 2019-10-22.**
+**Updated on 2019-10-26.**
 
 
 
@@ -52,9 +52,10 @@ Enable end stop interrupts to reduce CPU load by uncommenting `#define ENDSTOP_I
 Follow the next steps to enable and configure BL Touch:
 
 1. Uncomment `//#define BLTOUCH`.
-2. Change `#define XY_PROBE_SPEED 8000` to `#define XY_PROBE_SPEED 10000`.
-3. Change `#define\ AUTO_BED_LEVELING_BILINEAR` to `#define AUTO_BED_LEVELING_BILINEAR`.
-4. Uncomment `//#define Z_SAFE_HOMING`.
+2. Uncomment `//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN`.
+3. Change `#define XY_PROBE_SPEED 8000` to `#define XY_PROBE_SPEED 10000`.
+4. Change `#define\ AUTO_BED_LEVELING_BILINEAR` to `#define AUTO_BED_LEVELING_BILINEAR`.
+5. Uncomment `//#define Z_SAFE_HOMING`.
 
 If you're using BL Touch mount from original Creality kit on Ender-5 change `#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }` to `#define NOZZLE_TO_PROBE_OFFSET { -43, -6, 0 }`.
 
