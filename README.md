@@ -16,7 +16,7 @@ Features:
 
   
 
-**Updated on 2019-11-26.**
+**Updated on 2019-12-27.**
 
 
 
@@ -113,5 +113,5 @@ Octoprint download page: https://octoprint.org/download/
 | Board                | BIGTREETECH SKR Mini E3 v1.0                                 |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with Z end stop port (PC2) and powered by a low noise buck converter |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit ee5080b065, 2019-11-26 |
+| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit 2434f0e8ef, 2019-12-17 |
 
