@@ -656,7 +656,7 @@
 //#define Z_STEPPER_AUTO_ALIGN
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
   // Define probe X and Y positions for Z1, Z2 [, Z3]
-  #define Z_STEPPER_ALIGN_XY { {  10, 290 }, { 150,  10 }, { 290, 290 } }
+  #define Z_STEPPER_ALIGN_XY { {  10, 190 }, { 100,  10 }, { 190, 190 } }
 
   // Provide Z stepper positions for more rapid convergence in bed alignment.
   // Currently requires triple stepper drivers.
@@ -1244,6 +1244,44 @@
 #endif // HAS_GRAPHICAL_LCD
 
 //
+// Additional options for DGUS / DWIN displays
+//
+#if HAS_DGUS_LCD
+  #define DGUS_SERIAL_PORT 2
+  #define DGUS_BAUDRATE 115200
+
+  #define DGUS_RX_BUFFER_SIZE 128
+  #define DGUS_TX_BUFFER_SIZE 48
+  //#define DGUS_SERIAL_STATS_RX_BUFFER_OVERRUNS  // Fix Rx overrun situation (Currently only for AVR)
+
+  #define DGUS_UPDATE_INTERVAL_MS  500    // (ms) Interval between automatic screen updates
+  #define BOOTSCREEN_TIMEOUT      3000    // (ms) Duration to display the boot screen
+
+  #if EITHER(DGUS_LCD_UI_FYSETC, DGUS_LCD_UI_HIPRECY)
+    #define DGUS_PRINT_FILENAME           // Display the filename during printing
+    #define DGUS_PREHEAT_UI               // Display a preheat screen during heatup
+
+    #if ENABLED(DGUS_LCD_UI_FYSETC)
+      //#define DUGS_UI_MOVE_DIS_OPTION   // Disabled by default for UI_FYSETC
+    #else
+      #define DUGS_UI_MOVE_DIS_OPTION     // Enabled by default for UI_HIPRECY
+    #endif
+
+    #define DGUS_FILAMENT_LOADUNLOAD
+    #if ENABLED(DGUS_FILAMENT_LOADUNLOAD)
+      #define DGUS_FILAMENT_PURGE_LENGTH 10
+      #define DGUS_FILAMENT_LOAD_LENGTH_PER_TIME 0.5 // (mm) Adjust in proportion to DGUS_UPDATE_INTERVAL_MS
+    #endif
+
+    #define DGUS_UI_WAITING               // Show a "waiting" screen between some screens
+    #if ENABLED(DGUS_UI_WAITING)
+      #define DGUS_UI_WAITING_STATUS 10
+      #define DGUS_UI_WAITING_STATUS_PERIOD 8 // Increase to slower waiting status looping
+    #endif
+  #endif
+#endif // HAS_DGUS_LCD
+
+//
 // Touch UI for the FTDI Embedded Video Engine (EVE)
 //
 #if ENABLED(TOUCH_UI_FTDI_EVE)
@@ -1438,7 +1476,8 @@
  * Override MIN_PROBE_EDGE for each side of the build plate
  * Useful to get probe points to exact positions on targets or
  * to allow leveling to avoid plate clamps on only specific
- * sides of the bed.
+ * sides of the bed. With NOZZLE_AS_PROBE negative values are
+ * allowed, to permit probing outside the bed.
  *
  * If you are replacing the prior *_PROBE_BED_POSITION options,
  * LEFT and FRONT values in most cases will map directly over
@@ -1490,9 +1529,10 @@
 //
 #define ARC_SUPPORT               // Disable this feature to save ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
-  #define MM_PER_ARC_SEGMENT  1   // Length of each arc segment
-  #define MIN_ARC_SEGMENTS   24   // Minimum number of segments in a complete circle
-  #define N_ARC_CORRECTION   25   // Number of interpolated segments between corrections
+  #define MM_PER_ARC_SEGMENT    1 // (mm) Length (or minimum length) of each arc segment
+  #define MIN_ARC_SEGMENTS     24 // Minimum number of segments in a complete circle
+  //#define ARC_SEGMENTS_PER_SEC 50 // Use feedrate to choose segment length (with MM_PER_ARC_SEGMENT as the minimum)
+  #define N_ARC_CORRECTION     25 // Number of interpolated segments between corrections
   //#define ARC_P_CIRCLES         // Enable the 'P' parameter to specify complete circles
   //#define CNC_WORKSPACE_PLANES  // Allow G2/G3 to operate in XY, ZX, or YZ planes
 #endif
@@ -1548,12 +1588,12 @@
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
  *  If undefined, defaults to 1MHz / (2 * MINIMUM_STEPPER_PULSE)
- *  500000 : Maximum for A4988 stepper driver
- *  400000 : Maximum for TMC2xxx stepper drivers
- *  250000 : Maximum for DRV8825 stepper driver
- *  200000 : Maximum for LV8729 stepper driver
- *  150000 : Maximum for TB6600 stepper driver
- *   15000 : Maximum for TB6560 stepper driver
+ *  5000000 : Maximum for TMC2xxx stepper drivers
+ *  1000000 : Maximum for LV8729 stepper driver
+ *  500000  : Maximum for A4988 stepper driver
+ *  250000  : Maximum for DRV8825 stepper driver
+ *  150000  : Maximum for TB6600 stepper driver
+ *   15000  : Maximum for TB6560 stepper driver
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
@@ -1754,6 +1794,7 @@
   #define FILAMENT_UNLOAD_PURGE_RETRACT       13  // (mm) Unload initial retract length.
   #define FILAMENT_UNLOAD_PURGE_DELAY       5000  // (ms) Delay for the filament to cool after retract.
   #define FILAMENT_UNLOAD_PURGE_LENGTH         8  // (mm) An unretract is done, then this length is purged.
+  #define FILAMENT_UNLOAD_PURGE_FEEDRATE      25  // (mm/s) feedrate to purge before unload
 
   #define PAUSE_PARK_NOZZLE_TIMEOUT           45  // (seconds) Time limit before the nozzle is turned off for safety.
   #define FILAMENT_CHANGE_ALERT_BEEPS         10  // Number of alert beeps to play when a response is needed.
@@ -2128,8 +2169,6 @@
    *
    * IMPROVE_HOMING_RELIABILITY tunes acceleration and jerk when
    * homing and adds a guard period for endstop triggering.
-   *
-   * TMC2209 requires STEALTHCHOP enabled for SENSORLESS_HOMING
    */
   //#define SENSORLESS_HOMING // StallGuard capable drivers only
 
@@ -2148,7 +2187,6 @@
     #define Y_STALL_SENSITIVITY  8
     //#define Z_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
-    //#define HOME_USING_SPREADCYCLE
     //#define IMPROVE_HOMING_RELIABILITY
   #endif
 
@@ -2726,7 +2764,11 @@
   #define JOY_Z_PIN   12  // RAMPS: Suggested pin A12 on AUX2
   #define JOY_EN_PIN  44  // RAMPS: Suggested pin D44 on AUX2
 
-  // Use M119 to find reasonable values after connecting your hardware:
+  //#define INVERT_JOY_X  // Enable if X direction is reversed
+  //#define INVERT_JOY_Y  // Enable if Y direction is reversed
+  //#define INVERT_JOY_Z  // Enable if Z direction is reversed
+
+  // Use M119 with JOYSTICK_DEBUG to find reasonable values after connecting:
   #define JOY_X_LIMITS { 5600, 8190-100, 8190+100, 10800 } // min, deadzone start, deadzone end, max
   #define JOY_Y_LIMITS { 5600, 8250-100, 8250+100, 11000 }
   #define JOY_Z_LIMITS { 4800, 8080-100, 8080+100, 11550 }
