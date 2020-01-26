@@ -16,7 +16,7 @@ Features:
 
   
 
-**Updated on 2020-01-10.**
+**Updated on 2020-01-26.**
 
 
 
@@ -99,6 +99,8 @@ Marlin bugfix-2.0.x: http://marlinfw.org/meta/download/
 
 Marlin Github repository: https://github.com/MarlinFirmware/Marlin
 
+Marlin config files Github repository: https://github.com/MarlinFirmware/Configurations
+
 BIGTREETECH SKR MINI E3&E3 DIP User Group on FB: https://www.facebook.com/groups/322956191976815/
 
 Octoprint download page: https://octoprint.org/download/
@@ -113,5 +115,5 @@ Octoprint download page: https://octoprint.org/download/
 | Board                | BIGTREETECH SKR Mini E3 v1.0                                 |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with Z end stop port (PC2) and powered by a low noise buck converter |
-| Original file source | Ender-5 example config files bundled with Marlin bugfix-2.0.x tree, commit b8db1e16a9, 2020-01-10 |
+| Original file source | Ender-5 example config files from https://github.com/MarlinFirmware/Configurations |
 
