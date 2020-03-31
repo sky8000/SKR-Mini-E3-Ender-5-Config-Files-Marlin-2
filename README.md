@@ -14,11 +14,11 @@ Features:
 
 - Works with Octoprint.
 
-- Compatible with Marlin 2.0.5.1.
+- Compatible with Marlin 2.0.5.2.
 
   
 
-**Updated on 2020-03-23.**
+**Updated on 2020-03-31.**
 
 
 
