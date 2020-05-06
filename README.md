@@ -2,7 +2,7 @@
 
 This repository contains Marlin custom config files for **Creality Ender-5** printers with a BIGTREETECH SKR Mini E3 v1.0 motherboard.  Settings used are also compatible with **Ender-3** and **Ender-3 Pro**, just be sure to use the correct config examples for your printer. For more information about which settings to change please browse to the config folder in this repository and read the readme.md files.
 
-Please note that this configuration is **not compatible with SKR Mini E3 v1.2**.
+Please note that this configuration is **not compatible with SKR Mini E3 v1.2 or v2.0**.
 
 Features:
 
@@ -18,7 +18,7 @@ Features:
 
   
 
-**Updated on 2020-04-20.**
+**Updated on 2020-05-06.**
 
 
 
@@ -26,7 +26,7 @@ Features:
 
 1. Get the latest Marlin bugfix-2.0.x from the official site here: http://marlinfw.org/meta/download/.
 2. Copy files from folder **\Config_BLTouch31\Config_Files** in this repository to the folder **\Marlin** in your firmware root folder.
-3. **Optional:** Copy files from folder **\Config_BLTouch31\Board_Pins** in this repository to the folder **\Marlin\src\pins\stm32** in your firmware root folder if you want to use BL Touch dedicated port (PC14) instead of the default Z end stop pin (PC2).
+3. **Optional:** Copy files from folder **\Config_BLTouch31\Board_Pins** in this repository to the folder **\Marlin\src\pins\stm32f1** in your firmware root folder if you want to use BL Touch dedicated port (PC14) instead of the default Z end stop pin (PC2).
 4. Copy files from folder **\Config_BLTouch31\Compiler_Settings** in this repository to the your firmware root folder.
 6. Compile the software and flash the board.
 6. **Optional:** Do a "Restore failsafe" from the printer's menu or delete file EEPROM.DAT from the SD Card before powering on to make sure that the printer is running with the default values and avoid malfunction.
