@@ -2,23 +2,19 @@
 
 This repository contains Marlin custom config files for **Creality Ender-5** printers with a BIGTREETECH SKR Mini E3 v1.0 motherboard.  Settings used are also compatible with **Ender-3** and **Ender-3 Pro**, just be sure to use the correct config examples for your printer. For more information about which settings to change please browse to the config folder in this repository and read the readme.md files.
 
-Please note that this configuration is **not compatible with SKR Mini E3 v1.2 or v2.0**.
+Please note that this configuration is **not compatible with SKR Mini E3 v1.2 or v2.0**. 
 
 Features:
 
 - Stock Ender-5/Ender-3/Ender-3 Pro LCD 12864 support.
-
 - BL Touch 3.x support (connected to dedicated on board port).
-
 - EEPROM support.
-
 - Works with Octoprint.
+- Compatible with Marlin 2.0.6.
 
-- Compatible with Marlin 2.0.5.3.
+Please read section **Configuration changes for late 2019 Ender-5 printers** if you have an Ender-5 printer shipped from mid/end 2019.
 
-  
-
-**Updated on 2020-06-30.**
+**Updated on 2020-08-06.**
 
 
 
@@ -31,7 +27,15 @@ Features:
 6. Compile the software and flash the board.
 6. **Optional:** Do a "Restore failsafe" from the printer's menu or delete file EEPROM.DAT from the SD Card before powering on to make sure that the printer is running with the default values and avoid malfunction.
 
-   
+
+
+## Configuration changes for late 2019 Ender-5 printers 
+
+In late 2019, Creality changed the Z leadscrew on Ender-5 matching the one shipped with the Ender-5 Pro to prevent the bed from dropping after power cuts. If your printer shipped with the new leadscrew you'll need to change `DEFAULT_AXIS_STEPS_PER_UNIT { 80, 80, 400, 93 }`  to  `DEFAULT_AXIS_STEPS_PER_UNIT { 80, 80, 800, 93 }` in  `Configuration.h`.
+
+If you are unsure which leadscrew you printer has but your prints are half as tall as they should be, then your printer should have the new version of the leadscrew and you need to change Z stepping configuration. 
+
+
 
 ## Installation guide for Printers without BL Touch
 
@@ -40,6 +44,8 @@ Features:
 3. Copy files from folder **\Config_BLTouch31\Compiler_Settings** in this repository to the your firmware root folder.
 5. Compile the software and flash the board.
 6. **Optional:** Do a "Restore failsafe" from the printer's menu or delete file EEPROM.DAT from the SD Card before powering on to make sure that the printer is running with the default values and avoid malfunction.
+
+
 
 ## Connecting BL Touch to dedicated on-board port (PC14)
 
@@ -113,7 +119,7 @@ Octoprint download page: https://octoprint.org/download/
 
 | Item                 | Detail/description                                           |
 | -------------------- | ------------------------------------------------------------ |
-| Printer              | Creality Ender-5 (settings also compatible with Ender-3 and Ender-3 Pro using the correct config file examples from Marlin 2.0.5) |
+| Printer              | Creality Ender-5 (settings also compatible with Ender-3 and Ender-3 Pro using the correct config file examples from Marlin 2.0.6) |
 | Board                | BIGTREETECH SKR Mini E3 v1.0                                 |
 | Display              | Stock Ender-5 display (LCD 12864)                            |
 | ABL                  | BL Touch 3.1, tested with Z end stop port (PC2) and powered by a low noise buck converter |
